@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}item detail{% endblock title %}
+
+{% block content %}
+<div><br>
+    <div class="card mb-3" style="max-width: 1200px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{dish.image.url}}" class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h2 class="card-title">{{dish.name}}</h2>
+                    <p class="card-text">{{dish.dic}}</p>
+                    <p class="card-text">
+                        <h5 class="text-muted">Prize {{dish.prize}}Rs.</h5>
+                    </p>
+                    <br><br><br>
+                    {% if user.is_authenticated %}
+                    <form action="order/{{dish.id}}" method="post">{% csrf_token %}
+                        <div class="input-group">
+                            <label class="input-group-text" for="inputGroupSelect01">Quantity</label>
+                            <select class="form-select" id="inputGroupSelect04"
+                                aria-label="Example select with button addon" name="quantity">
+                                <option selected>Choose...</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                                <option value="4">Four</option>
+                                <option value="5">Five</option>
+                                <option value="6">Six</option>
+                            </select>
+                            <button class="btn btn-outline-success" type="submit">Order Now</button>
+                        </div>
+                    </form>
+                    {% else %}
+                    <div>
+                        <h4>please signin <a href="auth/signin">here</a> to order now</h4>
+                    </div>
+                    {% endif %}
+                    <!-- <div class="btn-group" role="group">
+                        <a href="/" class="btn btn-outline-primary">Order Now</a>
+
+                    </div> -->
+                </div>
+
+            </div>
+            <ul class="list-group list-group-flush">
+                <form action="">
+                    <li class="list-group-item">
+
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInput" value="{{info.contactNo}}"
+                                disabled>
+                            <label for="floatingInput">Contact No.</label>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingPassword" value="{{info.address}}"
+                                disabled>
+                            <label for="floatingPassword">Address</label>
+                        </div>
+                    </li>
+                    <!-- <li class="list-group-item">
+                        <div><input type="submit" class="form-control" value="change"></div>
+                    </li> -->
+
+
+                </form>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock content %}

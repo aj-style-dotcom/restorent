@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title%}Order Placed{% endblock title%}
+{% block content%}
+<div class="card mb-3" style="max-width: 1200px;">
+	<div class="row g-0">
+	  <div class="col-md-4">
+		<img src={{image}} class="img-fluid rounded-start" alt="...">
+	  </div>
+	  <div class="col-md-8">
+		<div class="card-body">
+		  <h1 class="card-title">Order Summery</h1>
+		  <p class="card-text"> order placed succussfully for</p>
+		  <p class="card-text"><b>{{name}}</b></p>
+		  <br>
+		  <div>
+			<p class="card-text"><small class="text-muted">{{prize}} Rs. Quantity : {{quantity}}</small></p>
+			<h3>Total : {{total}} Rs.</h3>
+			<div class="btn-group" role="group">
+				<a href="/" class="btn btn-outline-primary">Go To Home</a>
+				<!-- <a href="addcart/{{dish.id}}" class="btn btn-outline-primary">Add to Cart</a> -->
+			</div>
+		</div>
+		</div>
+		
+	  </div>
+	</div>
+  </div>
+{% endblock content%}

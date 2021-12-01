@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title%}Profile{% endblock title%}
+
+
+{% block content%}
+<div class='container'>
+
+    <h1>{{info.username}}</h1>
+    <form class="row g-" action="pro" method="post"> {% csrf_token %}
+        <div class="col-md-6">
+            <label for="name" class="form-label">First and Last Name</label>
+            <input type="text" class="form-control" name="fname" value="{{info.first_name}}"/>
+        </div>
+
+        <div class="col-md-6">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" value="{{info.email}}"/>
+        </div>
+
+        <div class="col-md-6">
+            <label for="Contact No." class="form-label">Contact No.</label>
+            <input type="text" class="form-control" name="contact" value="{{more.contactNo}}"/>
+        </div>
+
+        <div class="col-12">
+            <label for="bio" class="form-label">Address</label>
+            <textarea class="form-control" name="address" rows="3" >{{more.address}}</textarea>
+        </div>
+        <div class="btn-group" role="group">
+            <input type="submit" class="btn btn-success" href="logout" value="Update Details"/>
+            <a class="btn btn-danger" href="logout">Logout</a>
+        </div>
+    
+    </form>
+    
+    
+
+</div>
+{% endblock content%}

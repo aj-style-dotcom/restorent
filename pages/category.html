@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title%}Category{% endblock title%}
+{% block content%}
+<div><br>
+    <h2>{{page}} Items</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for dish in list %}
+        <div>
+            <div class="col">
+                <div class="card h-100">
+                    <a href="{{dish.id}}">
+                        <h5 class="card-header">{{dish.name}}</h5>
+                        <img src={{dish.image.url}} class="card-img-top" alt="..." />
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text">{{dish.dic|truncatechars:40}}</p>
+                    </div>
+                    <div class="card-footer text-muted">
+                        {{dish.prize}} Rs.
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content%}
